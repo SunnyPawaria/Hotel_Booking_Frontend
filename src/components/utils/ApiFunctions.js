@@ -22,10 +22,19 @@ export async function addRoom(photo, roomType, roomPrice) {
 // This function get all the room types from the database
 export async function getRoomTypes() {
     try {
-        const response = await api.get("/rooms/room-types")
+        const response = await api.get("/rooms/room/types")
         return response.data
     } catch (error) {
         throw new Error("Error featching in room types")
 
+    }
+}
+// This fuction get all the rooms from the database
+export async function getAllRooms(){
+    try {
+        const result = await api.get("/rooms/all-rooms")
+        return result.data
+    } catch (error) {
+        throw new Error("Error featching all rooms")
     }
 }
