@@ -1,15 +1,16 @@
 import React from "react";
+import 'bootstrap/dist/css/bootstrap.min.css'; // Ensure Bootstrap CSS is included
 
-const RoomPaginator = ({ currentPage, totaPages, onPageChange }) => {
-  const pageNumbers = Array.from({ length: totaPages }, (_, i) => i + 1);
+const RoomPaginator = ({ currentPage, totalPages, onPageChange }) => {
+  const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
   return (
     <nav>
-      <ul className="pagination, justify-content-center">
+      <ul className="pagination justify-content-center">
         {pageNumbers.map((pageNumber) => (
           <li
             key={pageNumber}
             className={`page-item ${
-              currentPage === pageNumber ? "acitve" : ""
+              currentPage === pageNumber ? "active" : ""
             }`}
           >
             <button

@@ -72,5 +72,3 @@ const RoomTypeSelector = ({ handleRoomInputChange, newRoom }) => {
 };
 
 export default RoomTypeSelector;
-
-//2:17:00

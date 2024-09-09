@@ -2,14 +2,28 @@ import React, { useState } from "react";
 
 const RoomFilter = ({ data, setFilteredData }) => {
   const [filter, setFilter] = useState("");
+  // const handleSelectChange = (e) => {
+  //   const selectedRoomType = e.target.value;
+  //   setFilter(selectedRoomType);
+  //   const filteredRooms = data.filter((room) =>
+  //     room.roomType.toLowerCase().includes(selectedRoomType)
+  //   );
+  //   setFilteredData(filteredRooms);
+  // };
+
   const handleSelectChange = (e) => {
     const selectedRoomType = e.target.value;
     setFilter(selectedRoomType);
-    const filteredRooms = data.filter((room) =>
-      room.roomType.toLowerCase().includes(selectedRoomType)
-    );
-    setFilteredData(filteredRooms);
+    if (selectedRoomType === "") {
+      setFilteredData(data); // Reset the filter if no specific room type is selected
+    } else {
+      const filteredRooms = data.filter(
+        (room) => room.roomType === selectedRoomType
+      );
+      setFilteredData(filteredRooms);
+    }
   };
+
   const clearFilter = () => {
     setFilter("");
     setFilteredData(data);
@@ -32,7 +46,7 @@ const RoomFilter = ({ data, setFilteredData }) => {
           </option>
         ))}
       </select>
-      <button className="btn btn-hotel" type="button" onChange={clearFilter}>
+      <button className="btn btn-hotel" type="button" onClick={clearFilter}>
         Clear filter
       </button>
     </div>
